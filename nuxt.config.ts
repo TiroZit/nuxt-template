@@ -67,7 +67,13 @@ export default defineNuxtConfig({
 		plugins: {
 			'autoprefixer': {},
 			'postcss-sort-media-queries': {},
-			'postcss-pxtorem': {},
+			'postcss-pxtorem': {
+				propList: [
+					'*',
+					'!line-height',
+					'!letter-spacing',
+				],
+			},
 			'postcss-functions': {
 				functions: {
 					fluid,

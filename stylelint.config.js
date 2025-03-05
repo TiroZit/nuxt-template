@@ -551,7 +551,7 @@ export default {
 		'value-keyword-case': [
 			'lower',
 			{
-				ignoreFunctions: ['/$^/', 'var'],
+				ignoreFunctions: ['/$^/', 'var', 'v-bind'],
 			},
 		],
 		'value-no-vendor-prefix': null,
