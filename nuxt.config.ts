@@ -37,11 +37,16 @@ export default defineNuxtConfig({
 	},
 
 	components: {
-		dirs: [],
-	},
-	imports: {
-		autoImport: false,
-		scan: false,
+		dirs: [
+			{
+				path: 'modules',
+				pathPrefix: false,
+			},
+			{
+				path: 'shared',
+				pathPrefix: false,
+			},
+		],
 	},
 
 	css: ['@/assets/styles/_index.sass'],
