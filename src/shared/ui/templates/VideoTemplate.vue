@@ -60,12 +60,6 @@ function stopVideo() {
 	}
 }
 
-watch(() => autoplay, (value) => {
-	if (value) {
-		playVideo();
-	}
-});
-
 const mediaQueries = computed(() => {
 	return video.sources.map((source) => {
 		if (!source.breakpoint || !source.mediaQuery)
