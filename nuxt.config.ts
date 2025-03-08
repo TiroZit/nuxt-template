@@ -7,7 +7,7 @@ import {
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: '2025-03-05',
-	modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/fonts', '@pinia/nuxt'],
+	modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/fonts', '@pinia/nuxt', '@vueuse/nuxt'],
 
 	app: {
 		head: {
