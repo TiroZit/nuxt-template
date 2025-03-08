@@ -94,6 +94,10 @@ export default defineNuxtConfig({
 		],
 	},
 
+	pinia: {
+		storesDirs: ['src/**/model'],
+	},
+
 	experimental: {
 		typedPages: true,
 	},
