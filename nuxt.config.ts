@@ -66,7 +66,6 @@ export default defineNuxtConfig({
 	postcss: {
 		plugins: {
 			'autoprefixer': {},
-			'postcss-sort-media-queries': {},
 			'postcss-pxtorem': {
 				propList: [
 					'*',
