@@ -32,8 +32,6 @@
 	// -----------------
 	--btn-radius: var(--radius-s)
 	// -----------------
-	--btn-loader-color: currentcolor
-	--btn-loader-ring-color: transparent
 	--btn-icon-size: 16px
 
 	position: relative
@@ -88,40 +86,17 @@
 		--btn-border-color: var(--btn-border-color-active)
 
 	&:disabled,
-	&.disabled,
 	&.swiper-button-disabled
 		--btn-color: var(--btn-color-disabled)
 		--btn-bg: var(--btn-bg-disabled)
 		--btn-border-color: var(--btn-border-color-disabled)
-
 		cursor: not-allowed
-		pointer-events: none
 
 		&:focus-visible
 			outline: none
 
 	&[loading='true']
 		cursor: wait
-
-		&::before
-			content: ''
-			position: absolute
-			top: calc(50% - var(--btn-icon-size) / 2)
-			left: calc(50% - var(--btn-icon-size) / 2)
-
-			display: block
-			flex: none
-
-			size: var(--btn-icon-size)
-
-			border-width: 2px
-			border-style: solid
-
-			border-radius: 50%
-			border-color: var(--btn-loader-color) var(--btn-loader-color) var(--btn-loader-ring-color)
-
-			transition: border-color 0.3s ease
-			animation: spin360 0.7s linear infinite
 
 		& > *
 			visibility: hidden
