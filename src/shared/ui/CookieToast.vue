@@ -38,7 +38,7 @@ function onConfirmCookie() {
 			<dialog v-if="cookieShown" ref="cookieToast" :open="cookieShown" class="cookie-toast">
 				<div class="cookie-toast__inner">
 					<span class="cookie-toast__text">Мы используем куки, чтобы сделать сайт удобнее для вас</span>
-					<Button class="cookie-toast__btn" text="Хорошо" @click="onConfirmCookie" />
+					<ButtonUi class="cookie-toast__btn" text="Хорошо" @click="onConfirmCookie" />
 				</div>
 			</dialog>
 		</transition>

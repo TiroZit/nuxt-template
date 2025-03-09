@@ -101,7 +101,7 @@ const mediaQueries = computed(() => {
 				:media="mediaQueries[key]"
 			>
 		</video>
-		<Button v-if="!isHover && !isErrored && !autoplay" class="video__action" @click="playVideo()" />
+		<ButtonUi v-if="!isHover && !isErrored && !autoplay" class="video__action" @click="playVideo()" />
 		<span v-if="isErrored" class="video__error">Ошибка загрузки видео</span>
 	</div>
 </template>
