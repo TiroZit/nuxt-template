@@ -1,38 +1,37 @@
-.btn
-	--btn-px: fluid(19, 15)
-	--btn-py: fluid(13, 11)
-	--btn-gap: fluid(16, 12)
-	--btn-min-height: fluid(48, 40)
-	// -----------------
-	--btn-font-family: var(--font-family-primary)
-	--btn-font-size: var(--font-size-text-m)
-	--btn-line-height: var(--line-height-m)
-	--btn-letter-spacing: normal
-	--btn-font-weight: 500
-	--btn-text-transform: none
-	// -----------------
-	--btn-color: var(--color-neutral-900)
-	--btn-color-hover: var(--color-neutral-900)
-	--btn-color-focus: var(--color-neutral-900)
-	--btn-color-active: var(--color-neutral-900)
-	--btn-color-disabled: var(--color-neutral-500)
-	// -----------------
-	--btn-bg: var(--color-neutral-100)
-	--btn-bg-hover: var(--color-neutral-100)
-	--btn-bg-focus: var(--color-neutral-100)
-	--btn-bg-active: var(--color-neutral-100)
-	--btn-bg-disabled: var(--color-neutral-300)
-	// -----------------
-	--btn-border-size: 1PX
-	--btn-border-color: transparent
-	--btn-border-color-hover: transparent
-	--btn-border-color-focus: transparent
-	--btn-border-color-active: transparent
-	--btn-border-color-disabled: transparent
-	// -----------------
-	--btn-radius: var(--radius-s)
-	// -----------------
-	--btn-icon-size: 16px
+.button
+	--button-px: fluid(19, 15)
+	--button-py: fluid(13, 11)
+	--button-gap: fluid(16, 12)
+	--button-min-height: fluid(48, 40)
+	// Typography
+	--button-font-family: var(--font-family-primary)
+	--button-font-size: var(--font-size-text-m)
+	--button-font-weight: 500
+	--button-line-height: var(--line-height-m)
+	--button-letter-spacing: normal
+	--button-text-transform: none
+	// Color
+	--button-color: var(--color-neutral-900)
+	--button-color-hover: var(--color-neutral-900)
+	--button-color-focus: var(--color-neutral-900)
+	--button-color-active: var(--color-neutral-900)
+	--button-color-disabled: var(--color-neutral-500)
+	// Background
+	--button-bg: var(--color-neutral-100)
+	--button-bg-hover: var(--color-neutral-100)
+	--button-bg-focus: var(--color-neutral-100)
+	--button-bg-active: var(--color-neutral-100)
+	--button-bg-disabled: var(--color-neutral-300)
+	// Border
+	--button-border-size: 1PX
+	--button-border-radius: var(--radius-s)
+	--button-border-color: transparent
+	--button-border-color-hover: transparent
+	--button-border-color-focus: transparent
+	--button-border-color-active: transparent
+	--button-border-color-disabled: transparent
+	// Icon
+	--button-icon-size: 16px
 
 	position: relative
 
@@ -40,60 +39,54 @@
 
 	align-items: center
 	justify-content: center
-	gap: var(--btn-gap)
+	gap: var(--button-gap)
 
-	min-height: max(calc(var(--btn-font-size) * var(--btn-line-height) + var(--btn-py) * 2 + var(--btn-border-size) * 2), var(--btn-min-height))
-	padding: var(--btn-py) var(--btn-px)
+	min-height: var(--button-min-height)
+	padding: var(--button-py) var(--button-px)
 
-	border: var(--btn-border-size) solid var(--btn-border-color)
-	border-radius: var(--btn-radius)
+	border: var(--button-border-size) solid var(--button-border-color)
+	border-radius: var(--button-border-radius)
 
-	background-color: var(--btn-bg)
+	background-color: var(--button-bg)
 
-	color: var(--btn-color)
+	color: var(--button-color)
 
-	font-family: var(--btn-font-family)
-	font-size: var(--btn-font-size)
-	font-weight: var(--btn-font-weight)
-	letter-spacing: var(--btn-letter-spacing)
-	line-height: var(--btn-line-height)
+	font-family: var(--button-font-family)
+	font-size: var(--button-font-size)
+	font-weight: var(--button-font-weight)
+	letter-spacing: var(--button-letter-spacing)
+	line-height: var(--button-line-height)
 
 	text-align: center
 	text-decoration: none
-	text-transform: var(--btn-text-transform)
+	text-transform: var(--button-text-transform)
 
 	transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease
 
 	cursor: pointer
 
-	&:focus
-		outline: none
-
 	&:focus-visible
-		--btn-color: var(--btn-color-focus)
-		--btn-bg: var(--btn-bg-focus)
-		--btn-border-color: var(--btn-border-color-focus)
+		--button-color: var(--button-color-focus)
+		--button-bg: var(--button-bg-focus)
+		--button-border-color: var(--button-border-color-focus)
 
 	@include hover
-		--btn-color: var(--btn-color-hover)
-		--btn-bg: var(--btn-bg-hover)
-		--btn-border-color: var(--btn-border-color-hover)
+		--button-color: var(--button-color-hover)
+		--button-bg: var(--button-bg-hover)
+		--button-border-color: var(--button-border-color-hover)
 
 	&:active,
-	&.active
-		--btn-color: var(--btn-color-active)
-		--btn-bg: var(--btn-bg-active)
-		--btn-border-color: var(--btn-border-color-active)
+	&.active,
+	&.router-link-active
+		--button-color: var(--button-color-active)
+		--button-bg: var(--button-bg-active)
+		--button-border-color: var(--button-border-color-active)
 
-	&:disabled,
-	&.swiper-button-disabled
-		--btn-color: var(--btn-color-disabled)
-		--btn-bg: var(--btn-bg-disabled)
-		--btn-border-color: var(--btn-border-color-disabled)
+	&:disabled
+		--button-color: var(--button-color-disabled)
+		--button-bg: var(--button-bg-disabled)
+		--button-border-color: var(--button-border-color-disabled)
 		cursor: not-allowed
-
-		&:focus-visible
-			outline: none
 
 	&.loading
 		cursor: wait
@@ -102,12 +95,42 @@
 			visibility: hidden
 
 	&__text
-		display: block
 		flex: none
 
 	&__icon
-		display: block
 		flex: none
-		width: var(--btn-icon-size)
-		height: var(--btn-icon-size)
+		width: var(--button-icon-size)
+		height: var(--button-icon-size)
 		color: currentcolor
+
+	&--link
+		--button-px: 0
+		--button-py: 0
+		--button-gap: 8px
+		--button-min-height: max-content
+		// Typography
+		--button-font-family: var(--font-family-primary)
+		--button-font-size: var(--font-size-text-l)
+		--button-font-weight: 400
+		--button-line-height: var(--line-height-xs)
+		--button-letter-spacing: normal
+		--button-text-transform: none
+		// Color
+		--button-color: var(--color-neutral-900)
+		--button-color-hover: var(--color-primary-500)
+		--button-color-focus: var(--color-primary-500)
+		--button-color-active: var(--color-neutral-800)
+		--button-color-disabled: var(--color-neutral-300)
+		// Icon
+		--button-icon-size: 20px
+
+		border: none
+		border-radius: revert
+		background-color: transparent
+		text-align: start
+
+		&-underlined
+			text-decoration: underline
+			text-decoration-color: var(--button-color-hover)
+			text-decoration-thickness: 2px
+			text-underline-offset: 4px

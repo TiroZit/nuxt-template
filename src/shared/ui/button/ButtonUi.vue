@@ -1,36 +1,56 @@
 <script setup lang="ts">
-import type { NuxtLinkProps } from '#app';
+import type { Props } from '~/shared/ui/button/button.types';
 
-interface Props extends Omit<NuxtLinkProps, 'noPrefetch'> {
-	link?: boolean;
-	text?: string;
-	iconLeft?: string;
-	iconRight?: string;
-	loading?: boolean;
-	disabled?: boolean;
-}
+defineOptions({ inheritAttrs: false });
 
-const props = defineProps<Props>();
-const { link, text, iconLeft, iconRight, loading, disabled, ...nuxtLinkProps } = props;
+const props = withDefaults(defineProps<Props>(), {
+	type: 'button',
+});
+const emit = defineEmits<{
+	click: [];
+}>();
+
+const nuxtLinkProps = reactiveOmit(
+	props,
+	'variants',
+	'type',
+	'label',
+	'iconLeft',
+	'iconRight',
+	'disabled',
+	'loading',
+	'link',
+	'noPrefetch',
+);
 
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate();
 </script>
 
 <template>
 	<DefineTemplate>
-		<Icon v-if="iconLeft" :name="`icons:${iconLeft}`" class="btn__icon" />
-		<span v-if="text" class="btn__text" v-html="text" />
-		<Icon v-if="iconRight" :name="`icons:${iconRight}`" class="btn__icon" />
+		<Icon v-if="iconLeft" :name="`icons:${iconLeft}`" class="button__icon" />
+		<span v-if="label" class="button__text" v-html="label" />
+		<Icon v-if="iconRight" :name="`icons:${iconRight}`" class="button__icon" />
 	</DefineTemplate>
 
-	<NuxtLinkCustom v-if="link" v-bind="nuxtLinkProps" class="btn" :disabled="disabled">
-		<ReuseTemplate />
-	</NuxtLinkCustom>
-
-	<button v-else class="btn" :class="{ loading }" :disabled="disabled || loading">
-		<ReuseTemplate />
-		<LoaderUi v-show="loading" class="btn__icon" />
-	</button>
+	<NuxtLink custom>
+		<template v-if="to">
+			<NuxtLink v-bind="nuxtLinkProps" class="button">
+				<ReuseTemplate />
+			</NuxtLink>
+		</template>
+		<button
+			v-else
+			class="button"
+			:class="[{ loading }, ...variants || '']"
+			:disabled="disabled || loading"
+			:type
+			@click="emit('click')"
+		>
+			<ReuseTemplate />
+			<LoaderUi v-show="loading" class="button__icon" />
+		</button>
+	</NuxtLink>
 </template>
 
 <style scoped lang="sass">
