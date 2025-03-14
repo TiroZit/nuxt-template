@@ -16,10 +16,13 @@ interface NuxtLinkProps extends Omit<RouterLinkProps, 'to'> {
 	noPrefetch?: boolean;
 }
 
-type variants = 'button--link' | 'button--link-underlined';
+type Variant =
+	'link' |
+	'link-underlined'
+;
 
 export interface Props extends NuxtLinkProps {
-	variants?: variants[];
+	variant?: Variant;
 	type?: ButtonHTMLAttributes['type'];
 	label?: string;
 	iconLeft?: string;

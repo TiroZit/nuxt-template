@@ -12,7 +12,7 @@ const emit = defineEmits<{
 
 const nuxtLinkProps = reactiveOmit(
 	props,
-	'variants',
+	'variant',
 	'type',
 	'label',
 	'iconLeft',
@@ -24,6 +24,16 @@ const nuxtLinkProps = reactiveOmit(
 );
 
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate();
+
+const classVariant = computed<string>(() => {
+	switch (props.variant) {
+		case 'link':
+			return 'button--link';
+		case 'link-underlined':
+			return 'button--link button--link-underlined';
+	}
+	return '';
+});
 </script>
 
 <template>
@@ -35,14 +45,14 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate();
 
 	<NuxtLink custom>
 		<template v-if="to">
-			<NuxtLink v-bind="nuxtLinkProps" class="button">
+			<NuxtLink v-bind="nuxtLinkProps" class="button" :class="classVariant">
 				<ReuseTemplate />
 			</NuxtLink>
 		</template>
 		<button
 			v-else
 			class="button"
-			:class="[{ loading }, ...variants || '']"
+			:class="[{ loading }, classVariant]"
 			:disabled="disabled || loading"
 			:type
 			@click="emit('click')"
