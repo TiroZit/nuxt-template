@@ -1,9 +1,10 @@
 export const useModalsStore = defineStore('modals', () => {
-	const modalsRegister = ref(new Set<string>());
-	const openedModals = ref(new Set<string>());
+	const modalsRegister = ref<Set<string>>(new Set());
+	const openedModals = ref<Set<string>>(new Set());
 	const bodyLocked = ref(false);
 	const currentGallerySlide = ref<number | null>(null);
 	const animationDuration = ref(450);
+	const modalData = ref<Map<string, unknown>>(new Map());
 
 	const isModalOpened = (modalName: string) => openedModals.value.has(modalName);
 
@@ -25,7 +26,7 @@ export const useModalsStore = defineStore('modals', () => {
 		modalsRegister.value.delete(modalName);
 	}
 
-	function openModal(modalName: string) {
+	function openModal(modalName: string, data?: unknown) {
 		if (!modalsRegister.value.has(modalName))
 			throw new Error(`${modalName} : has not been registered`);
 
@@ -35,6 +36,8 @@ export const useModalsStore = defineStore('modals', () => {
 		}
 
 		openedModals.value.add(modalName);
+		if (data)
+			modalData.value.set(modalName, data);
 
 		if (!bodyLocked.value)
 			_lockBody();
@@ -50,12 +53,22 @@ export const useModalsStore = defineStore('modals', () => {
 		}
 
 		openedModals.value.delete(modalName);
+		modalData.value.delete(modalName);
 
 		if (!hasActiveModals.value && bodyLocked.value) {
 			setTimeout(() => {
 				_unlockBody();
 			}, animationDuration.value);
 		}
+	}
+
+	function openGalleryModal(modalName: string, slide: number) {
+		currentGallerySlide.value = slide;
+		openModal(modalName);
+	}
+
+	function getModalData<T = unknown>(modalName: string): T | undefined {
+		return modalData.value.get(modalName) as T | undefined;
 	}
 
 	function _lockBody() {
@@ -66,11 +79,6 @@ export const useModalsStore = defineStore('modals', () => {
 	function _unlockBody() {
 		document.body.classList.remove('modal-lock');
 		bodyLocked.value = false;
-	}
-
-	function openGalleryModal(modalName: string, slide: number) {
-		currentGallerySlide.value = slide;
-		openModal(modalName);
 	}
 
 	return {
@@ -86,5 +94,6 @@ export const useModalsStore = defineStore('modals', () => {
 		openGalleryModal,
 		isModalOpened,
 		hasActiveModals,
+		getModalData,
 	};
 });
