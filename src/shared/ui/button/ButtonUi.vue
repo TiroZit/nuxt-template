@@ -6,6 +6,7 @@ defineOptions({ inheritAttrs: false });
 const props = withDefaults(defineProps<Props>(), {
 	type: 'button',
 });
+
 const emit = defineEmits<{
 	click: [];
 }>();
