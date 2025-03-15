@@ -53,7 +53,7 @@ const classVariant = computed<string>(() => {
 		<button
 			v-else
 			class="button"
-			:class="[{ loading }, classVariant]"
+			:class="[{ loading }, classVariant, $attrs.class]"
 			:disabled="disabled || loading"
 			:type
 			@click="emit('click')"
