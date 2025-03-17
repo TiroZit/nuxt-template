@@ -2,9 +2,5 @@
 </script>
 
 <template>
-	<div />
+	<FormCallback />
 </template>
-
-<style scoped lang="sass">
-
-</style>

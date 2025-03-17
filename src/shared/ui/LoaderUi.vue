@@ -1,5 +1,5 @@
 <template>
-	<Icon class="loader" name="icons:loader" />
+	<Icon class="loader" name="icons:spinner" />
 </template>
 
 <style scoped lang="sass">
@@ -12,9 +12,12 @@
 
 	display: block
 	flex: none
+	visibility: visible !important
 
 	width: var(--width)
 	height: var(--height)
+
+	color: var(--color-primary-500)
 
 	animation: spinner 0.7s linear infinite
 	translate: -50% -50%

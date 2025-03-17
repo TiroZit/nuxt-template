@@ -1,0 +1,113 @@
+.default-input
+	--di-font-size: var(--font-size-text-l)
+	--di-line-height: var(--line-height-xl)
+	--di-py: fluid(16, 12)
+	--di-px: fluid(24, 16)
+	--di-min-height: 58px
+	--di-color: var(--color-neutral-900)
+	--di-color-disabled: rgba(var(--color-neutral-900-trans), 0.3)
+	--di-color-error: var(--color-negative)
+	--di-placeholder-color: var(--color-neutral-500)
+	--di-bg: var(--color-neutral-100)
+	--di-bg-hover: var(--color-neutral-100)
+	--di-bg-disabled: var(--color-neutral-trans-100)
+	--di-bg-focus: var(--color-neutral-100)
+	--di-border-color: var(--color-neutral-500)
+	--di-border-color-hover: var(--color-primary-500)
+	--di-border-color-focus: var(--color-primary-600)
+	--di-border-color-disabled: rgba(var(--color-neutral-900-trans), 0.3)
+	--di-border-color-error: var(--color-negative)
+	--di-border-width: 2px
+	--di-border-radius: var(--radius-l)
+	--di-icon-size: 20px
+	--di-icon-color: currentcolor
+	--di-label-color: var(--color-neutral-400)
+	--di-label-font-size: var(--font-size-text-m)
+	--di-label-line-height: var(--line-height-m)
+	--di-label-font-weight: 400
+	--di-bg-loading: var(--color-neutral-200)
+	--di-bg-loading-gradient: var(--color-neutral-100)
+
+	display: flex
+	flex-direction: column
+
+	&.required
+		.default-input
+			&__label
+				&::after
+					content: '*'
+					color: var(--color-negative)
+
+	&.loading
+		position: relative
+		pointer-events: none
+
+		.default-input
+			&__input
+				--di-border-color: transparent
+				overflow: hidden
+				border-radius: var(--di-border-radius)
+
+				&::before
+					content: ''
+					position: absolute
+					inset: 0
+					z-index: calc(var(--z-index-above) * 10)
+
+					width: 100%
+					height: 100%
+
+					border-radius: var(--di-border-radius)
+					background-color: var(--di-bg-loading)
+
+				&::after
+					content: ''
+					position: absolute
+					inset: 0
+					z-index: calc(var(--z-index-above-secondary) * 10)
+
+					width: 100%
+					height: 100%
+
+					border-radius: var(--di-border-radius)
+
+					background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--di-bg-loading-gradient), rgba(255, 255, 255, 0))
+
+					animation: skeleton-animation 1.25s ease-in-out infinite
+
+		.input-check
+			&__checkmark
+				opacity: 0
+
+			&__value
+				opacity: 0
+
+	&__label
+		display: flex
+		gap: 4px
+		padding-bottom: 8px
+		color: var(--di-label-color)
+		font-size: var(--di-label-font-size)
+		font-weight: var(--di-label-font-weight)
+		line-height: var(--di-label-line-height)
+
+	&__input
+		position: relative
+		display: flex
+		align-items: center
+		gap: 8px
+
+		.input-btn
+			--btn-min-height: var(--di-min-height)
+
+	&__errors
+		margin-top: 4px
+
+	&__error
+		color: var(--color-negative)
+		font-size: var(--font-size-text-s)
+		font-weight: 400
+		line-height: var(--line-height-xs)
+
+	&__bottom
+		margin-top: 12px
