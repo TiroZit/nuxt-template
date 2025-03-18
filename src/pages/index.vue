@@ -2,5 +2,5 @@
 </script>
 
 <template>
-	<FormCallback />
+	<div />
 </template>
