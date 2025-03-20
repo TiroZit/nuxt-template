@@ -29,7 +29,7 @@
 		"@vueuse/integrations": "13.0.0",
 		"@vueuse/nuxt": "13.0.0",
 		"maska": "3.1.0",
-		"nuxt": "3.16.0",
+		"nuxt": "3.16.1",
 		"nuxt-swiper": "2.0.0",
 		"universal-cookie": "7.2.2",
 		"vue": "3.5.13",
